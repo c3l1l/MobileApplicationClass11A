@@ -6,53 +6,41 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
+  Image,
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-
-
 
 function App(): JSX.Element {
-
-  let marka="Ford";
-  let model="Mustang";
-  let renk="Kirmizi"
-  let mesaj=`Benim bir ${marka} marka ${model} model ${renk} renkte bir aracim var.`;
-
-
   return (
-    <SafeAreaView >
+    <SafeAreaView style={styles.container}>
       <View>
-        <Text style={styles.myText}>{mesaj}</Text>
+        <Image
+        source={{ uri: 'https://picsum.photos/200/300'}}
+        style={{ width: 200, height: 300 }}
+        blurRadius={10}
+        fadeDuration={100}
+        />
+        <Text>Image from url</Text>
+        <Image source={require('./images/tree.jpg')} style={{ width: 200, height: 300 }} blurRadius={2}  />
+        <Text>static image</Text>
       </View>
-
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-
-  myText: {
-    marginTop:50,
-    textAlign:'center',
-    color: 'blue',
-    backgroundColor: 'gray'
+  container: {
+    marginTop: 20,
+    color: '#083061',
+    backgroundColor: '#2596be',
+    alignItems:'center',
+    justifyContent:'center'
   },
 });
 
