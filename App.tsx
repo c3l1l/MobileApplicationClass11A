@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
 
 let sayi= Math.floor(Math.random() * 10);
-const Faktoriyel = (value: number) => {
+const Faktoriyel = (value:any) => {
   let sonuc = 1;
   for (let i = 1; i <= value; i++) {
     sonuc = sonuc * i;
@@ -10,13 +10,40 @@ const Faktoriyel = (value: number) => {
 console.log(sonuc);
   return sonuc;
 }
+ const Selamla=(deger:any)=>{
+  if(deger!=null){
+    return (<Text>Merhaba {deger}</Text>)
+  }
+  else
+  return null;
+ }
 
 function App(): JSX.Element {
+  const [text,onChangeText]=useState();
+  const [isim,isimDegisken]= React.useState();
   return (
     <SafeAreaView style={stiller.container}>
       <TouchableOpacity style={stiller.box}>
         <Text style={stiller.yaziStil}>{sayi}!={Faktoriyel(sayi)}</Text>
       </TouchableOpacity>
+      <View style={stiller.box}>
+        <TextInput
+        value={text}
+        onChangeText={onChangeText}
+        placeholder='Bir sayi gir'
+        />
+      </View>
+      <TouchableOpacity style={stiller.box}>
+        <Text style={stiller.yaziStil}>{text}!={Faktoriyel(text)}</Text>
+      </TouchableOpacity>
+      <View style={stiller.box} >
+        <TextInput
+        value={isim}
+        onChangeText={isimDegisken}
+        placeholder='Isminiz .....'
+        />
+        {Selamla(isim)}
+      </View>
     </SafeAreaView>
   );
 }
